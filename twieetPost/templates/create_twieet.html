@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %} wellcome our side {% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+
+{% block mainContant %} 
+
+<section class="container bg-success-subtle">
+
+    {% if form.instance.pk %} <h2 class="text-center">Edit Tweet</h2> {% else %} <h2 class="text-center">Create Tweet .</h2> {% endif %}
+
+    <form method="post" action="" enctype="multipart/form-data" novalidate>{% csrf_token %}
+
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit">Post</button>
+    </form>
+    <a class="btn btn-primary" href="{% url 'twieet_list' %}">Twieet lsit</a>
+</section>
+
+{% endblock mainContant %}
+
+
+
+
+{% block scripts %}
+{% endblock scripts %}

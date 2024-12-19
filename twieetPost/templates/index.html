@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %} wellcome our side {% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+
+{% block mainContant %} 
+
+<section class="container bg-success-subtle">
+    <h1 class="text-center my-4">Twieet Your Own Ideas</h1>
+
+    <div class="w-50">
+            <form method="post" action="">{% csrf_token %}
+                {{form.as_p}}
+
+                <button class="btn btn-outline-primary" type="submit">Post</button>
+            </form>
+
+    </div>
+</section>
+
+{% endblock mainContant %}
+
+
+
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %} wellcome our side {% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+
+{% block mainContant %} 
+
+<section class="container bg-success-subtle">
+    <h1 class="text-center my-4">Tweet Your Post</h1>
+    <div class="container">
+        <a class="btn btn-primary my-4" href="{% url 'twieet_create' %}">Create a Tweet</a>
+        <div class="row">
+          
+            {% for twieet in twieets %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/media/{{twieet.photos}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{twieet.user.username}}</h5>
+                  <p class="card-text">{{twieet.text}}</p>
+                  <a href="{% url 'twieet_edit' twieet.id %}" class="btn btn-primary">Edit</a>
+                  <a href="/twieetpost/delete/{{twieet.id}}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+          
+        </div>
+      </div>
+
+    
+</section>
+
+{% endblock mainContant %}
+
+
+
+
+{% block scripts %}
+{% endblock scripts %}
