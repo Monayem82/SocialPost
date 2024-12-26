@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %} wellcome our side {% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+
+{% block mainContant %} 
+
+<section class="container bg-success-subtle">
+    <h1 class="text-center my-4">Login -in </h1>
+
+    <div class="mx-auto w-50 my-2">
+            <form method="post" action="" novalidate>{% csrf_token %}
+                {% for field in form %}
+            <div class="form-group my-2">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <div style="color: red;">
+                    {% for error in field.errors %}
+                    <small>{{ error }}</small><br>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+                <button class="btn btn-outline-primary" type="submit">login in</button>
+            </form>
+            <p> Dont have an account <a href="{% url 'register' %}">Register</a></p>
+
+    </div>
+</section>
+
+{% endblock mainContant %}
+
+
+
+
+{% block scripts %}
+{% endblock scripts %}

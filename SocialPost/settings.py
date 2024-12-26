@@ -129,6 +129,12 @@ STATICFILES_DIRS=[
 MEDIA_ROOT=BASE_DIR /"media"
 MEDIA_URL="/media/"
 
+LOGIN_URL='/twieetpost/login/'
+
+LOGIN_REDIRECT_URL='/twieetpost/createtweet/'
+#LOGIN_REDIRECT_URL = '/twieetpost/login/'
+LOGOUT_REDIRECT_URL='/twieetPost/logout/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

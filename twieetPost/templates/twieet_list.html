@@ -7,11 +7,27 @@
 {% block style %}
 {% endblock style %}
 
+                                        
 
 {% block mainContant %} 
 
+                                        {% if user.is_authenticated %}
+                                        <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+                                           <p>Welcome, {{ user.username }}!</p>
+                                            <button class="btn btn-primary">Logout</button>
+                                        </form>
+                                        {% else %}
+                                            <p>You are not logged in. <a href="{% url 'login' %}">Login here</a></p>
+                                        {% endif %}
+
+
 <section class="container bg-success-subtle">
-    <h1 class="text-center my-4">Tweet Your Post</h1>
+    {% if user.username %}
+        <h1 class="text-center my-4">wellcome to {{user.username}}</h1>
+    {% else %}
+        <h1 class="text-center my-4">Tweet Your Post</h1>
+    {% endif %}
+    
     <div class="container">
         <a class="btn btn-primary my-4" href="{% url 'twieet_create' %}">Create a Tweet</a>
         <div class="row">
@@ -23,8 +39,11 @@
                 <div class="card-body">
                   <h5 class="card-title">{{twieet.user.username}}</h5>
                   <p class="card-text">{{twieet.text}}</p>
+
+                  {% if twieet.user == user %}
                   <a href="{% url 'twieet_edit' twieet.id %}" class="btn btn-primary">Edit</a>
                   <a href="/twieetpost/delete/{{twieet.id}}" class="btn btn-primary">Delete</a>
+                  {% endif %}
                 </div>
             </div>
         </div>

@@ -12,12 +12,14 @@
 
 <section class="container bg-success-subtle">
     
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{twieet.as_p}}
+        <button class="btn btn-danger">Delete</button>
+        <a href="{% url 'twieet_list' %}" class="btn btn-primary">Cancel</a>
+    </form>
 </section>
 
 {% endblock mainContant %}
-
-
-
 
 {% block scripts %}
 {% endblock scripts %}
