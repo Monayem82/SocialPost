@@ -30,23 +30,23 @@
     
     <div class="container">
         <a class="btn btn-primary my-4" href="{% url 'twieet_create' %}">Create a Tweet</a>
-        <div class="row">
+        <div class="row g-4">
           
             {% for twieet in twieets %}
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/media/{{twieet.photos}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{twieet.user.username}}</h5>
-                  <p class="card-text">{{twieet.text}}</p>
+            <div class="col col-md-4 col-sm-6 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="/media/{{twieet.photos}}" class="img-float" alt="..." style="object-fit: scale-down; width: 300px; height: 300px;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{twieet.user.username}}</h5>
+                    <p class="card-text">{{twieet.text}}</p>
 
-                  {% if twieet.user == user %}
-                  <a href="{% url 'twieet_edit' twieet.id %}" class="btn btn-primary">Edit</a>
-                  <a href="/twieetpost/delete/{{twieet.id}}" class="btn btn-primary">Delete</a>
-                  {% endif %}
+                    {% if twieet.user == user %}
+                    <a href="{% url 'twieet_edit' twieet.id %}" class="btn btn-primary">Edit</a>
+                    <a href="/twieetpost/delete/{{twieet.id}}" class="btn btn-primary">Delete</a>
+                    {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
             {% endfor %}
           
         </div>

@@ -59,9 +59,11 @@
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" class="btn btn-outline-primary" href="{% url 'twieet_list' %}">{% if user.username %}  {{ user.username }}  {% endif %}</a>
+                    {% if user.username %}
+                    <li class="nav-item mx-1">
+                         <a class="btn btn-primary" href="{% url 'profile' %}"> {{ user.username }}</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         {% if user.is_authenticated %}
                         <form method="post" action="{% url 'logout' %}">

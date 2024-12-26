@@ -91,3 +91,7 @@ def logoutUserView(request):
         return redirect('twieet_list')
     return redirect('twieet_list')
 
+
+@login_required
+def userProfile(request):
+    return render(request,'userProfile.html')
