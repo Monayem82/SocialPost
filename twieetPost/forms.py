@@ -39,3 +39,5 @@ class loginUserForm(AuthenticationForm):
             field.widget.attrs['class'] = 'form-control'
 
 
+class profileForm(forms.ModelForm):
+    pass

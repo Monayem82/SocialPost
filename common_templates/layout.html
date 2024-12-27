@@ -61,7 +61,7 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.username %}
                     <li class="nav-item mx-1">
-                         <a class="btn btn-primary" href="{% url 'profile' %}"> {{ user.username }}</a>
+                         <a class="btn btn-primary" href="{% url 'profile' user.id %}"> {{ user.username }}</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">

@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404,redirect
+from django.shortcuts import get_object_or_404,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
 from . forms import TwieetForm,RegisterUser,loginUserForm
-from . models import TwieetModel
+from . models import TwieetModel,User
 
 
 def twieet_list(request):
@@ -93,5 +93,20 @@ def logoutUserView(request):
 
 
 @login_required
-def userProfile(request):
-    return render(request,'userProfile.html')
+def userProfile(request,user_id):
+    userid=User.objects.get(id=user_id)
+    return render(request,'userProfile.html',{"userid":userid})
+
+
+@login_required
+def edit_informatons(request,edit_id):
+    if request.method=="POST":
+        user=get_object_or_404(User, id=edit_id)
+        #user_info=User.objects.get(request.POST,id=edit_id)
+        #if user.is_valid():
+            #user.save()
+        return HttpResponse('Its working .............')
+    else:
+        user=get_object_or_404(User, id=edit_id)
+
+    return render(request,'registrations/edit_user_info.html',{"form":user})
